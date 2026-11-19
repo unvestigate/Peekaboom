@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="using:Peekaboom.UI"
+             x:Class="Peekaboom.UI.TimelineBar">
+
+  <Border Background="#333333" BorderBrush="#262626" BorderThickness="0,1,0,0" Padding="6,4">
+    <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*,Auto">
+
+      <ComboBox x:Name="SceneBox" Grid.Column="0" Width="200" Margin="0,0,8,0" VerticalAlignment="Center"
+                ToolTip.Tip="Scene" />
+
+      <Button x:Name="FirstButton" Grid.Column="1" Classes="tool" ToolTip.Tip="First frame (Home)">
+        <Path Data="{x:Static ui:Icons.Previous}" />
+      </Button>
+
+      <Button x:Name="StepBackButton" Grid.Column="2" Classes="tool" ToolTip.Tip="Previous frame (Left)">
+        <Path Data="{x:Static ui:Icons.ChevronLeft}" />
+      </Button>
+
+      <Button x:Name="PlayButton" Grid.Column="3" Classes="tool" ToolTip.Tip="Play or pause (Space)">
+        <Path x:Name="PlayIcon" Data="{x:Static ui:Icons.Play}" />
+      </Button>
+
+      <Button x:Name="StepForwardButton" Grid.Column="4" Classes="tool" ToolTip.Tip="Next frame (Right)">
+        <Path Data="{x:Static ui:Icons.ChevronRight}" />
+      </Button>
+
+      <Button x:Name="LastButton" Grid.Column="5" Classes="tool" ToolTip.Tip="Last frame (End)">
+        <Path Data="{x:Static ui:Icons.Next}" />
+      </Button>
+
+      <ComboBox x:Name="SpeedBox" Grid.Column="6" Width="84" Margin="4,0,8,0" VerticalAlignment="Center"
+                ToolTip.Tip="Playback speed" />
+
+      <ToggleButton x:Name="FollowButton" Grid.Column="7" Classes="tool"
+                    ToolTip.Tip="Follow the newest frame while a game is connected">
+        <StackPanel Orientation="Horizontal" Spacing="6">
+          <Path Data="{x:Static ui:Icons.Live}" />
+          <TextBlock Text="Live" VerticalAlignment="Center" />
+        </StackPanel>
+      </ToggleButton>
+
+      <CheckBox x:Name="PreSimulationBox" Grid.Column="8" Content="Pre-sim" Margin="4,0,8,0" VerticalAlignment="Center"
+                ToolTip.Tip="Show the state at the end of the frame section, before the pose updates" />
+
+      <Slider x:Name="FrameSlider" Grid.Column="9" Minimum="0" Maximum="0" SmallChange="1" LargeChange="10"
+              TickFrequency="1" IsSnapToTickEnabled="True" VerticalAlignment="Center" />
+
+      <TextBlock x:Name="FrameText" Grid.Column="10" Margin="8,0,0,0" MinWidth="220" FontSize="12" Foreground="#D0D0D0"
+                 VerticalAlignment="Center" />
+
+    </Grid>
+  </Border>
+
+</UserControl>

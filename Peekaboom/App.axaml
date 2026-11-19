@@ -1,0 +1,36 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:log="using:Peekaboom.Logging"
+             xmlns:templates="using:Peekaboom.Templates"
+             xmlns:docking="using:Peekaboom.Docking"
+             xmlns:ui="using:Peekaboom.UI"
+             x:Class="Peekaboom.App"
+             RequestedThemeVariant="Dark">
+
+  <Application.Styles>
+    <StyleInclude Source="avares://Peekaboom/Themes/PeekaboomTheme.axaml" />
+  </Application.Styles>
+
+  <Application.DataTemplates>
+    <templates:StrictDataTemplate DataType="log:LogViewModel">
+      <log:LogPanel />
+    </templates:StrictDataTemplate>
+
+    <templates:StrictDataTemplate DataType="docking:ViewportViewModel">
+      <ui:ViewportPanel />
+    </templates:StrictDataTemplate>
+
+    <templates:StrictDataTemplate DataType="docking:ObjectsViewModel">
+      <ui:ObjectsPanel />
+    </templates:StrictDataTemplate>
+
+    <templates:StrictDataTemplate DataType="docking:PropertiesViewModel">
+      <ui:PropertiesPanel />
+    </templates:StrictDataTemplate>
+
+    <templates:StrictDataTemplate DataType="docking:DisplayViewModel">
+      <ui:DisplayPanel />
+    </templates:StrictDataTemplate>
+  </Application.DataTemplates>
+
+</Application>

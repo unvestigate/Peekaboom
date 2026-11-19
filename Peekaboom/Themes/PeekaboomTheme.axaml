@@ -1,0 +1,91 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:conv="using:Peekaboom.Docking"
+        xmlns:dockControls="using:Dock.Avalonia.Controls"
+        xmlns:dockModel="using:Dock.Model.Controls">
+
+  <FluentTheme />
+  <DockFluentTheme />
+
+  <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+
+  <Style Selector="dockControls|DocumentTabStrip" x:DataType="dockModel:IDocumentDock">
+    <Setter Property="IsVisible"
+            Value="{Binding VisibleDockables.Count, Converter={x:Static conv:DockConverters.CountGreaterThanOne}}" />
+  </Style>
+
+  <Style Selector="TreeViewItem /template/ ToggleButton">
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+
+  <Style Selector="TreeViewItem">
+    <Setter Property="MinHeight" Value="20" />
+    <Setter Property="Padding" Value="2,0" />
+    <Setter Property="Foreground" Value="#DADADA" />
+  </Style>
+
+  <Style Selector="DataGridColumnHeader">
+    <Setter Property="Background" Value="#3A3A3A" />
+  </Style>
+
+  <Style Selector="Button:disabled Path">
+    <Setter Property="Opacity" Value="0.35" />
+  </Style>
+
+  <Style Selector="Button.tool, ToggleButton.tool">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="Height" Value="26" />
+    <Setter Property="MinWidth" Value="30" />
+    <Setter Property="Padding" Value="8,0" />
+    <Setter Property="Margin" Value="0,0,4,0" />
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Background" Value="#4A4A4A" />
+    <Setter Property="Foreground" Value="#D8D8D8" />
+    <Setter Property="BorderThickness" Value="0" />
+  </Style>
+
+  <Style Selector="Button.tool:disabled, ToggleButton.tool:disabled">
+    <Setter Property="Opacity" Value="0.4" />
+  </Style>
+
+  <Style Selector="ToggleButton.tool:checked /template/ ContentPresenter">
+    <Setter Property="Background" Value="#2E7D4F" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+  </Style>
+
+  <Style Selector="Button.tool Path, ToggleButton.tool Path">
+    <Setter Property="Width" Value="12" />
+    <Setter Property="Height" Value="12" />
+    <Setter Property="Stretch" Value="Uniform" />
+    <Setter Property="Fill" Value="#D8D8D8" />
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+
+  <Style Selector="Button[IsDefault=True]">
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+
+  <Styles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://Dock.Avalonia.Themes.Fluent/Presets/Ide/VsCodeDark.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+
+      <SolidColorBrush x:Key="DockSurfaceWorkbenchBrush" Color="#3A3A3A" />
+      <SolidColorBrush x:Key="DockSurfaceEditorBrush" Color="#3A3A3A" />
+      <SolidColorBrush x:Key="DockTabActiveBackgroundBrush" Color="#2A2A2A" />
+      <SolidColorBrush x:Key="DockTabHoverBackgroundBrush" Color="#464649" />
+
+      <SolidColorBrush x:Key="DockSurfaceHeaderActiveBrush" Color="{DynamicResource SystemAccentColor}" />
+      <SolidColorBrush x:Key="DockThemeAccentBrush" Color="{DynamicResource SystemAccentColor}" />
+
+      <x:Double x:Key="DataGridSortIconMinWidth">0</x:Double>
+
+      <Thickness x:Key="DockDocumentContentBorderThickness">0</Thickness>
+    </ResourceDictionary>
+  </Styles.Resources>
+
+</Styles>

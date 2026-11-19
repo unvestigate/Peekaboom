@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:docking="using:Peekaboom.Docking"
+             x:Class="Peekaboom.UI.ObjectsPanel"
+             x:DataType="docking:ObjectsViewModel">
+
+  <DockPanel>
+    <TextBox x:Name="FilterBox" DockPanel.Dock="Top" Margin="4" Watermark="Search" />
+
+    <ListBox x:Name="Tree" ItemsSource="{Binding Rows}" Background="Transparent" BorderThickness="0"
+             ScrollViewer.HorizontalScrollBarVisibility="Auto">
+      <ListBox.Styles>
+        <Style Selector="ListBoxItem">
+          <Setter Property="Padding" Value="2,1" />
+          <Setter Property="MinHeight" Value="0" />
+        </Style>
+        <Style Selector="Border.expander">
+          <Setter Property="Width" Value="16" />
+          <Setter Property="Height" Value="16" />
+          <Setter Property="Background" Value="Transparent" />
+          <Setter Property="Cursor" Value="Hand" />
+        </Style>
+      </ListBox.Styles>
+      <ListBox.ItemTemplate>
+        <DataTemplate x:DataType="docking:ObjectNode">
+          <StackPanel Orientation="Horizontal" Margin="{Binding Indent}">
+            <Border Classes="expander">
+              <Path Data="{Binding ExpanderIcon}" Width="10" Height="10" Stretch="Uniform" Fill="#A0A0A0"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <TextBlock Text="{Binding Label}" Foreground="{Binding Foreground}" FontSize="12" VerticalAlignment="Center" />
+          </StackPanel>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+  </DockPanel>
+
+</UserControl>

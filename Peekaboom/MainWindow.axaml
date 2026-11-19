@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dock="using:Dock.Avalonia.Controls"
+        xmlns:ui="using:Peekaboom.UI"
+        x:Class="Peekaboom.MainWindow"
+        Title="Peekaboom"
+        Width="1400"
+        Height="900"
+        Background="#3A3A3A">
+
+  <DockPanel>
+
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="_File">
+        <MenuItem x:Name="OpenMenuItem" Header="_Open Capture..." InputGesture="Ctrl+O" />
+        <Separator />
+        <MenuItem x:Name="ExitMenuItem" Header="E_xit" />
+      </MenuItem>
+      <MenuItem Header="_View">
+        <MenuItem x:Name="SolidMenuItem" Header="_Solid" ToggleType="Radio" GroupName="RenderMode" />
+        <MenuItem x:Name="WireframeMenuItem" Header="_Wireframe" ToggleType="Radio" GroupName="RenderMode" />
+        <MenuItem x:Name="SolidWireframeMenuItem" Header="Solid _and Wireframe" ToggleType="Radio" GroupName="RenderMode" />
+        <Separator />
+        <MenuItem x:Name="GridMenuItem" Header="_Grid" ToggleType="CheckBox" />
+        <MenuItem x:Name="LeftHandedMenuItem" Header="_Left-Handed" ToggleType="CheckBox" />
+        <MenuItem x:Name="FrameSceneMenuItem" Header="_Frame Selection or Scene" InputGesture="F" />
+      </MenuItem>
+    </Menu>
+
+    <Border DockPanel.Dock="Bottom" Background="#333333" BorderBrush="#262626" BorderThickness="0,1,0,0" Padding="8,3">
+      <StackPanel Orientation="Horizontal" Spacing="6">
+        <Path x:Name="ConnectionIcon" Width="12" Height="12" Stretch="Uniform" Fill="#808080" VerticalAlignment="Center"
+              Data="{x:Static ui:Icons.PlugDisconnected}" />
+        <TextBlock x:Name="StatusBarText" FontSize="11" Foreground="#B0B0B0" VerticalAlignment="Center" />
+      </StackPanel>
+    </Border>
+
+    <ui:TimelineBar x:Name="Timeline" DockPanel.Dock="Bottom" />
+
+    <dock:DockControl x:Name="DockHost" />
+
+  </DockPanel>
+
+</Window>
